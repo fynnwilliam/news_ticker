@@ -1,3 +1,4 @@
+#include <algorithm>
 #include <iostream>
 #include <cstdlib>
 #include <thread>
@@ -16,7 +17,7 @@ int main()
 
 	for(int i = 0; i < 10000; i++)
 	{
-		rotate(banner);
+		std::rotate(banner.begin(), banner.begin() + 1, banner.end());
 		display(banner);
 		std::this_thread::sleep_for(1000ms);
 		std::system("clear");
