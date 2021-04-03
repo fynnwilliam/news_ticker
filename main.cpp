@@ -19,12 +19,12 @@ int main()
 
 	std::system("clear");
 
-	for(int i = 0; i < 10000; i++)
+	for(int i = 0; i < 10'000; i++)
 	{
 		std::rotate(slide.begin(), slide.begin() + 1, slide.end());
 		std::copy(slide.begin(), slide.end(), std::ostreambuf_iterator<char>(std::cout));
 		std::cout << std::flush;
-		std::this_thread::sleep_for(1000ms);
+		std::this_thread::sleep_for(1'000ms);
 		std::system("clear");
 	}
 
