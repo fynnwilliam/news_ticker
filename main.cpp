@@ -24,7 +24,7 @@ int main()
 		std::rotate(slide.begin(), slide.begin() + 1, slide.end());
 		std::copy(slide.begin(), slide.end(), std::ostreambuf_iterator<char>(std::cout));
 		std::cout << std::flush;
-		std::this_thread::sleep_for(1'000ms);
+		std::this_thread::sleep_for(1000ms);
 		std::system("clear");
 	}
 
