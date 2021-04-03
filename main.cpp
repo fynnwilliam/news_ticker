@@ -5,8 +5,6 @@
 #include <thread>
 #include <chrono>
 #include <string>
-#include <vector>
-
 
 int main()
 {
@@ -14,8 +12,8 @@ int main()
 	
 	std::system("clear");
 
-	std::string user_input {" welcome to the morning show...    "};
-	std::vector<char> banner(user_input.begin(), user_input.end());
+	std::string banner {"welcome to the morning show..."};
+	banner.insert(banner.begin(), 5, ' ');
 
 	for(int i = 0; i < 10000; i++)
 	{
