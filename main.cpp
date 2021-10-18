@@ -1,5 +1,4 @@
 #include <algorithm>
-#include <iterator>
 #include <iostream>
 #include <cstdlib>
 #include <thread>
@@ -17,15 +16,14 @@ int main()
 	
 	slide.insert(slide.begin(), 5, ' ');
 
-	std::system("clear");
+	std::system("clear -x");
 
-	for(int i = 0; i < 10'000; i++)
+	for(int i = 0; i < 10'000; ++i)
 	{
 		std::rotate(slide.begin(), slide.begin() + 1, slide.end());
-		std::cout << slide << std::flush;
+		std::cout << slide + '\r' << std::flush;
 		std::this_thread::sleep_for(1000ms);
-		std::system("clear");
 	}
 
-	return 0;
+	std::system("clear -x");
 }
