@@ -5,14 +5,11 @@
 #include <chrono>
 #include <string>
 
-int main()
+int main(int argc, char** argv)
 {
 	using namespace std::chrono_literals;
 
-	std::string slide;
-
-	std::cout << "please enter a message for the slide: ";
-	std::getline(std::cin, slide);
+	std::string slide = argv[1];
 	
 	slide.insert(slide.begin(), 5, ' ');
 
@@ -25,5 +22,5 @@ int main()
 		std::this_thread::sleep_for(1000ms);
 	}
 
-	std::system("clear -x");
+    std::system("clear -x");
 }
