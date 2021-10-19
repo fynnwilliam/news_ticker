@@ -1,10 +1,12 @@
 # news_ticker
 
-this is to mimic a news ticker, sometimes called a crawler or slide.
+This is to mimic a news ticker, sometimes called a crawler or slide.
 could be used for a tv programme or a scoreboard...
 
-to compile:
- `g++ -Wall main.cpp -o slide`
-
-and to run:
- `./slide`
+To compile, execute the following commands in the terminal:  
+ `mkdir build`  
+ `cd build`  
+ `cmake ../`  
+ `make`  
+  
+and to run the program, you may `./slide`
