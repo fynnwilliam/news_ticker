@@ -4,6 +4,11 @@
 #include <chrono>
 #include <string>
 
+void clear_line()
+{
+    std::cout << "\u001b[2K";
+}
+
 int main(int argc, char** argv)
 {
 	using namespace std::chrono_literals;
@@ -18,4 +23,6 @@ int main(int argc, char** argv)
 		std::cout << slide + '\r' << std::flush;
 		std::this_thread::sleep_for(1000ms);
 	}
+	
+	clear_line();
 }
