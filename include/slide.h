@@ -12,6 +12,9 @@ private:
     void clear_line() const;
 
 public:
+    slide(slide const&) = delete;
+    slide& operator=(slide const&) = delete;
+
     static slide& get_slide();
     
     void message(int argc, char** argv);
