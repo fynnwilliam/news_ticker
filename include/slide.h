@@ -8,6 +8,7 @@ private:
     std::string message_;
     
     slide() = default;
+    
     std::string rotate(std::size_t count) const;
     void clear_line() const;
 

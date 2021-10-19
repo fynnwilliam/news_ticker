@@ -1,4 +1,4 @@
-#include "../include/slide.h"
+#include "slide.h"
 
 #include <iostream>
 #include <iomanip>
