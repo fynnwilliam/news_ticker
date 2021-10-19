@@ -18,6 +18,7 @@ public:
 
     static slide& get_slide();
     
+    std::string const& message() const { return message_; }
     void message(int argc, char** argv);
     void message(std::string s);
     void display() const;

@@ -34,11 +34,11 @@ std::string slide::rotate(std::size_t count) const
            ?
            s.substr(count - 70, 70)
            :
-           count > 70 && s.size() < 70 // ...*
+           count > 70 && s.size() < 70
            ?
            s.substr(count - 70).append(count - s.size(), ' ')
            :
-           count > s.size() && s.size() < 70 // ...*
+           count > s.size() && s.size() < 70
            ?
            s.substr(0, count).append(count - s.size(), ' ')
            :
