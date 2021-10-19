@@ -19,9 +19,21 @@ void clear_line()
     std::cout << "\u001b[2K";
 }
 
-std::string rotate(std::string const& s, int count)
+std::string rotate(std::string const& s, std::size_t count)
 {
-    return count > s.size() && s.size() < 70
+    return count > 70 && s.size() >= 70 && s.substr(count - 70, 70).size() < 70
+           ?
+           s.substr(count - 70, 70).append(70 - s.substr(count - 70, 70).size(),' ')
+           :
+           count > 70 && s.size() >= 70
+           ?
+           s.substr(count - 70, 70)
+           :
+           count > 70 && s.size() < 70
+           ?
+           s.substr(count - 70, s.size() - count - 70).append(count - s.size(), ' ')
+           :
+           count > s.size()
            ?
            s.substr(0, count).append(count - s.size(), ' ')
            :
@@ -34,7 +46,7 @@ int main(int argc, char** argv)
 
 	std::string slide = extract_message(argc, argv);
 
-	for(int i = 0; i < 100; ++i)
+	for(std::size_t i = 0; i < slide.size() + 70; ++i)
 	{
 		std::cout << std::setw(70) << rotate(slide, i) + '\r' << std::flush;
 		std::this_thread::sleep_for(100ms);
