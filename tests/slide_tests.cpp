@@ -3,7 +3,7 @@
 #include <catch2/catch.hpp>
 #include "slide.h"
 
-TEST_CASE("get_slide() should return an lvalue of slide object")
+TEST_CASE("get_slide() should always return an lvalue of  the same slide object")
 {
     slide& a = slide::get_slide();
     slide& b = slide::get_slide();
