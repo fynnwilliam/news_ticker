@@ -25,21 +25,31 @@ void slide::message(std::string s)
     message_ = std::move(s);
 }
 
+bool slide::screen_full(int count) const
+{
+    return count >= 70;
+}
+
+bool slide::more_text() const
+{
+    return message().size() >= 70;
+}
+
+bool slide::less_text() const
+{
+    return message().size() <  70;
+}
+
 std::string slide::rotate(std::size_t count) const
 {
     std::string const& s = message_;
     std::string temp =  count >= 70 ? s.substr(count - 69, 70) : s.substr(0, count);
-    return count >= 70 && s.size() >= 70
-           ?
-           temp.append(70 - temp.size(),' ')
+    
+    return screen_full(count) && more_text()     ? temp.append(70 - temp.size(),' ')
            :
-           count >= 70 && s.size() < 70
-           ?
-           temp.append(count - s.size(), ' ')
+           screen_full(count) && less_text()     ? temp.append(count - s.size(), ' ')
            :
-           count > s.size() - 1 && s.size() < 70
-           ?
-           temp.append(count - s.size(), ' ')
+           count > s.size() - 1 && s.size() < 70 ? temp.append(count - s.size(), ' ')
            :
            temp;
 }
