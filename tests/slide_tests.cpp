@@ -63,7 +63,11 @@ TEST_CASE("message(int, char**) should assign the pointed to object to message_"
     }
 }
 
-TEST_CASE("message(std::string) should move the value parsed to it to message_")
+TEST_CASE("message(std::string) should move the value parsed to it, to message_")
 {
+    slide& s = slide::get_slide();
     
+    s.message("getting ready for the next session...");
+    
+    REQUIRE(s.message() == "getting ready for the next session...");
 } 
