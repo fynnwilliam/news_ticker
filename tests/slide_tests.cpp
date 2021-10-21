@@ -20,7 +20,7 @@ TEST_CASE("message() should return a const lvalue of the class data member, mess
     
     std::string const& first_msg = s.message();
     std::string const& second_msg = s.message();
-    
+
     SECTION("s.message() should return an empty string")
     {
         REQUIRE(s.message().size() == 0);
@@ -40,7 +40,27 @@ TEST_CASE("message() should return a const lvalue of the class data member, mess
 
 TEST_CASE("message(int, char**) should assign the pointed to object to message_")
 {
+    int argc{8};
     
+    char argv0[] = "./slide";
+    char argv1[] = "Hello";
+    char argv2[] = "everyone,";
+    char argv3[] = "you";
+    char argv4[] = "are";
+    char argv5[] = "welcome";
+    char argv6[] = "to";
+    char argv7[] = "CppCon!";
+    
+    char* argx[] = {argv0, argv1, argv2, argv3, argv4, argv5, argv6, argv7};
+    char** argv  = argx;
+    
+    slide& s = slide::get_slide();
+    s.message(argc, argv);
+    
+    SECTION("calling s.message() should return the same message argv points to")
+    {
+        REQUIRE(s.message() == "Hello everyone, you are welcome to CppCon!");
+    }
 }
 
 TEST_CASE("message(std::string) should move the value parsed to it to message_")
