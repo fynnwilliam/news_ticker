@@ -16,6 +16,8 @@ void slide::message(int argc, char** argv)
 {
     for (int i{1}; i < argc; ++i)
         message_.append(argv[i]).append(" ");
+        
+    if(message().size()) message_.pop_back();
 }
 
 void slide::message(std::string s)
