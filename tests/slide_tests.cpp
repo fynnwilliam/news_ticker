@@ -5,7 +5,13 @@
 
 TEST_CASE("get_slide() should return an lvalue of slide object")
 {
+    slide& a = slide::get_slide();
+    slide& b = slide::get_slide();
     
+    SECTION("a should be equal to b")
+    {
+        REQUIRE(&a == &b);
+    }
 }
 
 TEST_CASE("message() should return a const lvalue of the class data member, message_")
