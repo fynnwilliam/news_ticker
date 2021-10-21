@@ -28,19 +28,20 @@ void slide::message(std::string s)
 std::string slide::rotate(std::size_t count) const
 {
     std::string const& s = message_;
+    std::string temp =  count >= 70 ? s.substr(count - 69, 70) : s.substr(0, count);
     return count >= 70 && s.size() >= 70
            ?
-           s.substr(count - 69, 70).append(70 - s.substr(count - 69, 70).size(),' ')
+           temp.append(70 - temp.size(),' ')
            :
            count >= 70 && s.size() < 70
            ?
-           s.substr(count - 69, 70).append(count - s.size(), ' ')
+           temp.append(count - s.size(), ' ')
            :
            count > s.size() - 1 && s.size() < 70
            ?
-           s.substr(0, count).append(count - s.size(), ' ')
+           temp.append(count - s.size(), ' ')
            :
-           s.substr(0, count);
+           temp;
 }
 
 void slide::clear_line() const
