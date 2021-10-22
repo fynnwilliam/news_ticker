@@ -164,9 +164,41 @@ TEST_CASE("post-increment operator should return the value of count_ prior to th
     }
 }
 
-TEST_CASE("pre-decrement operator should return the updated value of count_")
+TEST_CASE("pre-decrement operator should return and lvalue of the updated count_")
 {
+    counter count{};
+    count.set(3);
     
+    auto& a = --count;
+    auto  b = a.data();
+    auto  c = (--count).data();
+    auto  d = (--count).data();
+    auto  e = (--count).data();
+    
+    SECTION("address of count should be the same as a")
+    {
+        REQUIRE(&count == &a);
+    }
+    
+    SECTION("b should be equal to 2")
+    {
+        REQUIRE(b == 2);
+    }
+    
+    SECTION("c should be equal to 1")
+    {
+        REQUIRE(c == 1);
+    }
+    
+    SECTION("d should be euqal to 0")
+    {
+        REQUIRE(d == 0);
+    }
+    
+    SECTION("further decrement on an object with value == 0 should return zero")
+    {
+        REQUIRE(e == 0);
+    }
 }
 
 TEST_CASE("post-decrement operator should return the value of count_ prior to the update")
