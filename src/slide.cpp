@@ -45,13 +45,9 @@ std::string slide::rotate(std::size_t count) const
     std::string const& s = message_;
     std::string temp =  screen_full(count) ? s.substr(count - (sw_ - 1), sw_) : s.substr(0, count);
     
-    return screen_full(count) && more_text()
-           ?
-           temp.append(sw_ - temp.size(),' ')
+    return screen_full(count) && more_text() ? temp.append(sw_ - temp.size(),' ')
            :
-           count > s.size() - 1 && less_text()
-           ?
-           temp.append(count - s.size(), ' ')
+           count > s.size() - 1              ? temp.append(count - s.size(), ' ')
            :
            temp;
 }
