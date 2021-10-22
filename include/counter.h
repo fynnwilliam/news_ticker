@@ -16,5 +16,5 @@ public:
     counter  operator--(int);
     counter& operator--();
     void reset();
-    void   set();
+    void set(int);
 };
