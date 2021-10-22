@@ -35,3 +35,8 @@ counter  counter::operator--(int)
 }
 
 void counter::reset() { count_ = 0; }
+
+void counter::set(int c)
+{
+    count_ = c >= 0 ? c : 0;
+}
