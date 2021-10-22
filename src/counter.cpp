@@ -20,4 +20,18 @@ counter  counter::operator++(int)
     return count;
 }
 
+counter& counter::operator--()
+{
+    --count_;
+    return *this;
+}
+
+counter  counter::operator--(int)
+{
+    counter count = *this;
+    --*this;
+    
+    return count;
+}
+
 void counter::reset() { count_ = 0; }

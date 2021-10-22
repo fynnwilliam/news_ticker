@@ -13,5 +13,7 @@ public:
     std::size_t data() const;
     counter& operator++();
     counter  operator++(int);
+    counter  operator--(int);
+    counter& operator--();
     void reset();
 };
