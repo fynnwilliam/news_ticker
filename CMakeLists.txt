@@ -4,8 +4,8 @@ set(CMAKE_CXX_STANDARD 20)
 
 project(slide)
 
-add_executable(slide src/main.cpp src/slide.cpp)
-add_executable(tests tests/slide_tests.cpp src/slide.cpp)
+add_executable(slide src/main.cpp src/slide.cpp src/counter.cpp)
+add_executable(tests tests/slide_tests.cpp src/slide.cpp src/counter.cpp)
 
 target_include_directories(slide PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/include)
 target_include_directories(tests PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/include)
