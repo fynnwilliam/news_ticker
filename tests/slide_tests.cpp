@@ -211,6 +211,7 @@ TEST_CASE("post-decrement operator should return an rvalue of count prior to the
     auto        c = count--.data();
     auto        d = count--.data();
     auto        e = count--.data();
+                    count--.data();
     
     SECTION("address of count should be different from the address of a")
     {
@@ -239,11 +240,26 @@ TEST_CASE("post-decrement operator should return an rvalue of count prior to the
     
     SECTION("further decrement on an object with value == 0 should return zero")
     {
-        REQUIRE(count--.data() == 0);
+        REQUIRE(count.data() == 0);
     }
 }
 
 TEST_CASE("reset() member function should assign zero to the count_ data member")
 {
+    counter count{};
+    count.set(11);
     
+    auto a = count.data();
+    
+    count.reset();
+    
+    SECTION("a should be equal to 11")
+    {
+        REQUIRE(a == 11);
+    }
+    
+    SECTION("count.data() should return 0 after a call to reset()")
+    {
+        REQUIRE(count.data() == 0);
+    }
 }
