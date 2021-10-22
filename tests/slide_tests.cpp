@@ -87,9 +87,15 @@ TEST_CASE("testing our constructor for the counter class")
     }
 }
 
-TEST_CASE("data() member function should return the current value held count_")
+TEST_CASE("data() member function should return the current value held by count_")
 {
+    counter count{};
+    count.set(10);
     
+    SECTION("count.data() should return 10")
+    {
+        REQUIRE(count.data() == 10);
+    }
 }
 
 TEST_CASE("pre-increment operator should return the updated value of count_")
