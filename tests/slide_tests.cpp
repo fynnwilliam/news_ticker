@@ -122,7 +122,41 @@ TEST_CASE("pre-increment operator should return an lvalue of the updated count_"
 
 TEST_CASE("post-increment operator should return the value of count_ prior to the update")
 {
+    counter count{};
     
+    auto const& a = count++;
+    auto        b = count.data();
+    auto        c = count++.data();
+    
+    SECTION("address of count should be different from the address of a")
+    {
+        REQUIRE(&count != &a);
+    }
+    
+    SECTION("count++.data() should return the previous version of count")
+    {
+        REQUIRE(b == c);
+    }
+    
+    SECTION("b should be equal to 1")
+    {
+        REQUIRE(b == 1);
+    }
+    
+    SECTION("the value in count should be more than 0")
+    {
+        REQUIRE(count.data());
+    }
+    
+    SECTION("count.data() should be greater than c")
+    {
+        REQUIRE(count.data() > c);
+    }
+    
+    SECTION("the difference between count.data() and b should be 1")
+    {
+        REQUIRE(count.data() - b == 1);
+    }
 }
 
 TEST_CASE("pre-decrement operator should return the updated value of count_")
