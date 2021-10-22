@@ -42,7 +42,7 @@ std::string slide::rotate(std::size_t count) const
     
     return screen_full(count) && more_text() ? temp.append(sw_ - temp.size(),' ')
            :
-           count > s.size() - 1              ? temp.append(count - s.size(), ' ')
+           count > temp.size() - 1           ? temp.append(count - temp.size(), ' ')
            :
            temp;
 }
