@@ -49,7 +49,7 @@ std::string slide::rotate(std::size_t count) const
            ?
            temp.append(sw_ - temp.size(),' ')
            :
-           count > s.size() - 1 || screen_full(count) && less_text()
+           count > s.size() - 1 && less_text()
            ?
            temp.append(count - s.size(), ' ')
            :
