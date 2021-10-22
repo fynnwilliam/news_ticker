@@ -70,4 +70,49 @@ TEST_CASE("message(std::string) should move the value parsed to it, to message_"
     s.message("getting ready for the next session...");
     
     REQUIRE(s.message() == "getting ready for the next session...");
-} 
+}
+
+TEST_CASE("testing our constructor for the counter class")
+{
+    counter count{};
+    
+    SECTION("the address of count should not be nullptr")
+    {
+        REQUIRE(&count != nullptr);
+    }
+    
+    SECTION("the data member, count_ must be assigned zero")
+    {
+        REQUIRE(!count.data());
+    }
+}
+
+TEST_CASE("data() member function should return the current value held count_")
+{
+    
+}
+
+TEST_CASE("pre-increment operator should return the updated value of count_")
+{
+    
+}
+
+TEST_CASE("post-increment operator should return the value of count_ prior to the update")
+{
+    
+}
+
+TEST_CASE("pre-decrement operator should return the updated value of count_")
+{
+    
+}
+
+TEST_CASE("post-decrement operator should return the value of count_ prior to the update")
+{
+    
+}
+
+TEST_CASE("reset() member function should assign zero to the count_ data member")
+{
+    
+}
