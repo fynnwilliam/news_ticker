@@ -98,9 +98,26 @@ TEST_CASE("data() member function should return the current value held by count_
     }
 }
 
-TEST_CASE("pre-increment operator should return the updated value of count_")
+TEST_CASE("pre-increment operator should return an lvalue of the updated count_")
 {
+    counter count{};
+    auto& a = ++count;
+    auto  b = (++count).data();
     
+    SECTION("address of count should be the same as a")
+    {
+        REQUIRE(&count == &a);
+    }
+    
+    SECTION("count.data() should return the same value as b")
+    {
+        REQUIRE(count.data() == b);
+    }
+    
+    SECTION("a.data() should return the same value as b")
+    {
+        REQUIRE(a.data() == b);
+    }
 }
 
 TEST_CASE("post-increment operator should return the value of count_ prior to the update")
