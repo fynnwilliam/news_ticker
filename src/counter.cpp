@@ -22,7 +22,8 @@ counter  counter::operator++(int)
 
 counter& counter::operator--()
 {
-    --count_;
+    if (count_) --count_;
+    
     return *this;
 }
 
