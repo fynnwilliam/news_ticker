@@ -8,7 +8,6 @@
 slide& slide::get_slide()
 {
     static slide s{};
-    
     return s;
 }
 
@@ -25,9 +24,9 @@ void slide::message(std::string s)
     message_ = std::move(s);
 }
 
-bool slide::screen_full(int count) const
+bool slide::screen_full() const
 {
-    return count >= sw_;
+    return count_.data() >= sw_;
 }
 
 bool slide::more_text() const
@@ -35,16 +34,13 @@ bool slide::more_text() const
     return message().size() >= sw_;
 }
 
-std::string slide::rotate(std::size_t count) const
+std::string slide::rotate() const
 {
     std::string const& s = message_;
-    std::string temp =  screen_full(count) ? s.substr(count - (sw_ - 1), sw_) : s.substr(0, count);
+    std::string temp =  screen_full() ? s.substr(count_.data() - (sw_ - 1), sw_) : s.substr(0, count_.data());
     
-    return screen_full(count) && more_text() ? temp.append(sw_ - temp.size(),' ')
-           :
-           count > temp.size() - 1           ? temp.append(count - temp.size(), ' ')
-           :
-           temp;
+    return screen_full() && more_text()    ? temp.append(sw_ - temp.size(),' ')            :
+           count_.data() > temp.size() - 1 ? temp.append(count_.data() - temp.size(), ' ') : temp;
 }
 
 void slide::clear_line() const
@@ -52,15 +48,16 @@ void slide::clear_line() const
     std::cout << "\u001b[2K";
 }
 
-void slide::display() const
+void slide::display()
 {
     using namespace std::chrono_literals;
 
-    for(std::size_t i{}; i < message_.size() + sw_; ++i)
-	{
-		std::cout << std::setw(sw_) << rotate(i) + '\r' << std::flush;
-		std::this_thread::sleep_for(300ms);
+	for ( ; count_.data() < message_.size() + sw_; ++count_)
+	{   
+	    std::cout << std::setw(sw_) << rotate() + '\r' << std::flush;
+	    std::this_thread::sleep_for(300ms);
 	}
 	
+	count_.reset();
 	clear_line();
 }
