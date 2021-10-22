@@ -6,6 +6,7 @@ class slide
 {
 private:
     std::string message_;
+    constexpr static int sw_{75};
     
     slide() = default;
     

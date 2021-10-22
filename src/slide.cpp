@@ -27,27 +27,31 @@ void slide::message(std::string s)
 
 bool slide::screen_full(int count) const
 {
-    return count >= 70;
+    return count >= sw_;
 }
 
 bool slide::more_text() const
 {
-    return message().size() >= 70;
+    return message().size() >= sw_;
 }
 
 bool slide::less_text() const
 {
-    return message().size() <  70;
+    return message().size() <  sw_;
 }
 
 std::string slide::rotate(std::size_t count) const
 {
     std::string const& s = message_;
-    std::string temp =  count >= 70 ? s.substr(count - 69, 70) : s.substr(0, count);
+    std::string temp =  screen_full(count) ? s.substr(count - (sw_ - 1), sw_) : s.substr(0, count);
     
-    return screen_full(count) && more_text()   ? temp.append(70 - temp.size(),' ')
+    return screen_full(count) && more_text()
+           ?
+           temp.append(sw_ - temp.size(),' ')
            :
-           count > s.size() - 1 || screen_full(count) && less_text()   ? temp.append(count - s.size(), ' ')
+           count > s.size() - 1 || screen_full(count) && less_text()
+           ?
+           temp.append(count - s.size(), ' ')
            :
            temp;
 }
@@ -61,9 +65,9 @@ void slide::display() const
 {
     using namespace std::chrono_literals;
 
-    for(std::size_t i{}; i < message_.size() + 70; ++i)
+    for(std::size_t i{}; i < message_.size() + sw_; ++i)
 	{
-		std::cout << std::setw(70) << rotate(i) + '\r' << std::flush;
+		std::cout << std::setw(sw_) << rotate(i) + '\r' << std::flush;
 		std::this_thread::sleep_for(300ms);
 	}
 	
