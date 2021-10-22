@@ -118,6 +118,11 @@ TEST_CASE("pre-increment operator should return an lvalue of the updated count_"
     {
         REQUIRE(a.data() == b);
     }
+    
+    SECTION("count.data() should be euqal to 2")
+    {
+        REQUIRE(count.data() == 2);
+    }
 }
 
 TEST_CASE("post-increment operator should return the value of count_ prior to the update")
