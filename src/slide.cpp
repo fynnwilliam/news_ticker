@@ -35,11 +35,6 @@ bool slide::more_text() const
     return message().size() >= sw_;
 }
 
-bool slide::less_text() const
-{
-    return message().size() <  sw_;
-}
-
 std::string slide::rotate(std::size_t count) const
 {
     std::string const& s = message_;

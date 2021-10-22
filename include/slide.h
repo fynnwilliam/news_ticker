@@ -14,7 +14,6 @@ private:
     void clear_line() const;
     bool screen_full(int count) const;
     bool more_text() const;
-    bool less_text() const;
 
 public:
     slide(slide const&) = delete;
