@@ -125,7 +125,7 @@ TEST_CASE("pre-increment operator should return an lvalue of the updated count_"
     }
 }
 
-TEST_CASE("post-increment operator should return the value of count_ prior to the update")
+TEST_CASE("post-increment operator should return an rvalue of count prior to the update")
 {
     counter count{};
     
@@ -201,9 +201,46 @@ TEST_CASE("pre-decrement operator should return and lvalue of the updated count_
     }
 }
 
-TEST_CASE("post-decrement operator should return the value of count_ prior to the update")
+TEST_CASE("post-decrement operator should return an rvalue of count prior to the update")
 {
+    counter count{};
+    count.set(3);
     
+    auto const& a = count--;
+    auto        b = a.data();
+    auto        c = count--.data();
+    auto        d = count--.data();
+    auto        e = count--.data();
+    
+    SECTION("address of count should be different from the address of a")
+    {
+        REQUIRE(&count != &a);
+    }
+    
+    SECTION("b should be equal to 3")
+    {
+        REQUIRE(b == 3);
+    }
+    
+    SECTION("c should be equal to 2")
+    {
+        REQUIRE(c == 2);
+    }
+    
+    SECTION("d should be euqal to 1")
+    {
+        REQUIRE(d == 1);
+    }
+    
+    SECTION("e should be euqal to 0")
+    {
+        REQUIRE(e == 0);
+    }
+    
+    SECTION("further decrement on an object with value == 0 should return zero")
+    {
+        REQUIRE(count--.data() == 0);
+    }
 }
 
 TEST_CASE("reset() member function should assign zero to the count_ data member")
