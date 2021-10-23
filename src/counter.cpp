@@ -22,7 +22,7 @@ counter  counter::operator++(int)
 
 counter& counter::operator--()
 {
-    if (count_) --count_;
+    count_ ? --count_ : count_;
     
     return *this;
 }
@@ -35,7 +35,10 @@ counter  counter::operator--(int)
     return count;
 }
 
-void counter::reset() { count_ = 0; }
+void counter::reset()
+{
+    count_ = 0;
+}
 
 void counter::set(int c)
 {
