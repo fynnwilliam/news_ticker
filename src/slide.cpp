@@ -48,6 +48,16 @@ void slide::clear_line() const
     std::cout << "\u001b[2K";
 }
 
+void slide::counter(std::size_t i)
+{
+    counter_ = i;
+}
+
+std::size_t slide::counter() const
+{
+    return counter_;
+}
+
 void slide::display()
 {
     using namespace std::chrono_literals;

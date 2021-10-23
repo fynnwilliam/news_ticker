@@ -25,4 +25,6 @@ public:
     void message(int argc, char** argv);
     void message(std::string s);
     void display();
+    void counter(std::size_t);
+    std::size_t counter() const;
 };
