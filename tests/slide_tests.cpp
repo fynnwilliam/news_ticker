@@ -74,6 +74,25 @@ TEST_CASE("message(std::string) should move the value parsed to it, to message_"
 
 TEST_CASE("slide::rotate() should only return a sub-string  of the message_")
 {
+    slide& s = slide::get_slide();
+    s.message("The next session starts in ten minutes");
+    s.counter(10);
+    
+    std::string message_before_rotate = s.message();
+    
+    std::string rotated_version       = s.rotate();
+    
+    std::string message_after_rotate = s.message();
+    
+    SECTION("the original message in the slide object should not change after a call to rotate()")
+    {
+        REQUIRE(message_before_rotate == message_after_rotate);
+    }
+    
+    SECTION("rotate should return a string object")
+    {
+        REQUIRE(rotated_version == s.message().substr(0, s.counter()));
+    }
 }
 
 TEST_CASE("slide::display() should alwayas reset the counter object to zero at the end of the for loop")
