@@ -9,7 +9,7 @@ private:
     std::size_t counter_{};
     constexpr static int sw_{75};
 
-    // std::string rotate() const;
+    std::string rotate() const;
     void clear_line() const;
     bool screen_full() const;
     bool more_text() const;
@@ -27,5 +27,4 @@ public:
     void display();
     void counter(std::size_t);
     std::size_t counter() const;
-    std::string rotate() const;
 };
