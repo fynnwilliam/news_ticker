@@ -74,4 +74,23 @@ TEST_CASE("message(std::string) should move the value parsed to it, to message_"
 
 TEST_CASE("slide::display() should alwayas reset the counter object to zero at the end of the for loop")
 {
+    slide& s = slide::get_slide();
+    s.message("The next session starts in ten minutes");
+    s.counter(13);
+    
+    std::size_t counter_before_display = s.counter();
+    
+    s.display();
+    
+    std::size_t counter_after_display  = s.counter();
+    
+    SECTION("counter before call to display must be greater than counter after call to display")
+    {
+        REQUIRE(counter_before_display > counter_after_display);
+    }
+    
+    SECTION("counter after display must be equal to zero")
+    {
+        REQUIRE(counter_after_display == 0);
+    }
 }
