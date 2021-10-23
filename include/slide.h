@@ -1,13 +1,12 @@
 #pragma once
 
 #include <string>
-#include "counter.h"
 
 class slide
 {
 private:
     std::string message_;
-    counter count_{};
+    std::size_t counter_{};
     constexpr static int sw_{75};
 
     std::string rotate() const;

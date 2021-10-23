@@ -26,7 +26,7 @@ void slide::message(std::string s)
 
 bool slide::screen_full() const
 {
-    return count_.data() >= sw_;
+    return counter_ >= sw_;
 }
 
 bool slide::more_text() const
@@ -37,10 +37,10 @@ bool slide::more_text() const
 std::string slide::rotate() const
 {
     std::string const& s = message_;
-    std::string temp =  screen_full() ? s.substr(count_.data() - (sw_ - 1), sw_) : s.substr(0, count_.data());
+    std::string temp =  screen_full() ? s.substr(counter_ - (sw_ - 1), sw_) : s.substr(0, counter_);
     
-    return screen_full() && more_text()    ? temp.append(sw_ - temp.size(),' ')            :
-           count_.data() > temp.size() - 1 ? temp.append(count_.data() - temp.size(), ' ') : temp;
+    return screen_full() && more_text() ? temp.append(sw_ - temp.size(),' ')       :
+           counter_ > temp.size() - 1   ? temp.append(counter_ - temp.size(), ' ') : temp;
 }
 
 void slide::clear_line() const
@@ -52,12 +52,12 @@ void slide::display()
 {
     using namespace std::chrono_literals;
 
-	for ( ; count_.data() < message_.size() + sw_; ++count_)
+	for ( ; counter_ < message_.size() + sw_; ++counter_)
 	{   
 	    std::cout << std::setw(sw_) << rotate() + '\r' << std::flush;
 	    std::this_thread::sleep_for(300ms);
 	}
 	
-	count_.reset();
+	counter_ = 0;
 	clear_line();
 }
