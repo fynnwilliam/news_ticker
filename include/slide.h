@@ -10,9 +10,10 @@ private:
     constexpr static int sw_{75};
 
     std::string rotate() const;
-    void clear_line() const;
-    bool screen_full() const;
-    bool more_text() const;
+    void reset_counter();
+    void clear_line()    const;
+    bool screen_full()   const;
+    bool more_text()     const;
     
     slide() = default;
     slide(slide const&) = delete;

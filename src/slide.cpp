@@ -58,6 +58,11 @@ std::size_t slide::counter() const
     return counter_;
 }
 
+void slide::reset_counter()
+{
+    counter_ = 0;
+}
+
 void slide::display()
 {
     using namespace std::chrono_literals;
@@ -68,6 +73,6 @@ void slide::display()
 	    std::this_thread::sleep_for(300ms);
 	}
 	
-	counter_ = 0;
+	reset_counter();
 	clear_line();
 }
