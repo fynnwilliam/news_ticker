@@ -13,7 +13,6 @@ private:
     void reset_counter();
     void clear_line()    const;
     bool screen_full()   const;
-    bool more_text()     const;
     
     slide() = default;
     slide(slide const&) = delete;

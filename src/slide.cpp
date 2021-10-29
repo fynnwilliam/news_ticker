@@ -29,11 +29,6 @@ bool slide::screen_full() const
     return counter_ >= sw_;
 }
 
-bool slide::more_text() const
-{
-    return message().size() >= sw_;
-}
-
 std::string slide::rotate() const
 {
     std::string const& s = message_;
