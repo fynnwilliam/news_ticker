@@ -65,7 +65,7 @@ void slide::display()
 	for ( ; counter_ < message_.size() + sw_; ++counter_)
 	{   
 	    std::cout << std::setw(sw_) << rotate() + '\r' << std::flush;
-	    std::this_thread::sleep_for(300ms);
+	    std::this_thread::sleep_for(150ms);
 	}
 	
 	reset_counter();
