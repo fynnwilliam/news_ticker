@@ -39,8 +39,8 @@ std::string slide::rotate() const
     std::string const& s = message_;
     std::string temp =  screen_full() ? s.substr(counter_ - (sw_ - 1), sw_) : s.substr(0, counter_);
     
-    return screen_full() && more_text() ? temp.append(sw_ - temp.size(),' ')       :
-           counter_ > temp.size() - 1   ? temp.append(counter_ - temp.size(), ' ') : temp;
+    return screen_full()           ? temp.append(sw_ - temp.size(),' ')       :
+           counter() > temp.size() ? temp.append(counter_ - temp.size(), ' ') : temp;
 }
 
 void slide::clear_line() const
