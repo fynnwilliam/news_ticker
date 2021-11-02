@@ -12,7 +12,7 @@ private:
     std::string rotate() const;
     void reset_counter();
     void clear_line()    const;
-    bool screen_full()   const;
+    bool is_screen_full()   const;
     
     slide() = default;
     slide(slide const&) = delete;

@@ -24,7 +24,7 @@ void slide::message(std::string s)
     message_ = std::move(s);
 }
 
-bool slide::screen_full() const
+bool slide::is_screen_full() const
 {
     return counter_ >= sw_;
 }
@@ -32,9 +32,9 @@ bool slide::screen_full() const
 std::string slide::rotate() const
 {
     std::string const& s = message();
-    std::string temp =  screen_full() ? s.substr(counter_ - (sw_ - 1), sw_) : s.substr(0, counter_);
+    std::string temp =  is_screen_full() ? s.substr(counter_ - (sw_ - 1), sw_) : s.substr(0, counter_);
     
-    return screen_full()           ? temp.append(     sw_ - temp.size(), ' ')  :
+    return is_screen_full()        ? temp.append(     sw_ - temp.size(), ' ')  :
            counter() > temp.size() ? temp.append(counter_ - temp.size(), ' ')  : temp;
 }
 
