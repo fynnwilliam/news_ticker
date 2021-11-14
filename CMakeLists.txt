@@ -10,4 +10,4 @@ add_executable(tests tests/slide_tests.cpp src/slide.cpp)
 target_include_directories(slide PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/include)
 target_include_directories(tests PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/include)
 
-target_compile_options(slide PRIVATE -g)
+target_compile_options(slide PRIVATE -O3)
