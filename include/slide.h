@@ -7,24 +7,26 @@ class slide
 private:
     std::string message_;
     std::size_t counter_{};
-    constexpr static int sw_{75};
+    constexpr static int screen_width_{75};
 
     std::string rotate() const;
-    void reset_counter();
-    void clear_line()    const;
-    bool is_screen_full()   const;
+    void reset_counter() noexcept;
+    void clear_line() const noexcept;
+    bool is_screen_full() const noexcept;
+    std::string& message() noexcept;
+    int sw() const noexcept;
     
     slide() = default;
     slide(slide const&) = delete;
     slide& operator=(slide const&) = delete;
 
 public:
-    static slide& get_slide();
+    static slide& get_slide() noexcept;
     
-    std::string const& message() const { return message_; }
-    void message(int argc, char** argv);
-    void message(std::string s);
+    std::string const& message() const noexcept { return message_; }
+    void message(int argc, char** argv) noexcept;
+    void message(std::string s) noexcept;
     void display();
-    void counter(std::size_t);
-    std::size_t counter() const;
+    void counter(std::size_t) noexcept;
+    std::size_t counter() const noexcept;
 };
