@@ -6,7 +6,7 @@ To compile, execute the following commands in the terminal:
  `mkdir build`  
  `cd build`  
  `cmake ../`  
- `make`  
+ `make slide`  
   
 and to run the program, you may `./slide message to be displayed`  
 Kindly replace __message to be displayed__ with  the actual message you want to show.
