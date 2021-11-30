@@ -16,7 +16,7 @@ TEST_CASE("get_slide() should always return an lvalue of  the same slide object"
 
 TEST_CASE("message() should return a const lvalue of the class data member, message_")
 {
-    slide& s = slide::get_slide();
+    slide const& s = slide::get_slide();
     
     std::string const& first_msg = s.message();
     std::string const& second_msg = s.message();
