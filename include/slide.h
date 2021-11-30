@@ -13,7 +13,6 @@ private:
     void reset_counter() noexcept;
     void clear_line() const noexcept;
     bool is_screen_full() const noexcept;
-    std::string& message() noexcept;
     int sw() const noexcept;
     
     slide() = default;
@@ -24,6 +23,7 @@ public:
     static slide& get_slide() noexcept;
     
     std::string const& message() const noexcept { return message_; }
+    std::string& message() noexcept;
     void message(int argc, char** argv) noexcept;
     void message(std::string s) noexcept;
     void display();
