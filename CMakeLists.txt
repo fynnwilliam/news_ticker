@@ -1,16 +1,6 @@
 cmake_minimum_required(VERSION	3.21.3)
-
 set(CMAKE_CXX_STANDARD 20)
-
 project(slide)
 
-add_library(slide_ src/slide.cpp)
-target_include_directories(slide_ PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/include)
-
+add_subdirectory(src)
 add_subdirectory(tests)
-
-add_executable(slide src/main.cpp)
-
-target_link_libraries(slide PRIVATE slide_)
-
-target_compile_options(slide PRIVATE -O3)
