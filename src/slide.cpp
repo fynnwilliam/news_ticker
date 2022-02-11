@@ -1,9 +1,9 @@
 #include "slide.h"
 
-#include <iostream>
-#include <iomanip>
-#include <thread>
 #include <chrono>
+#include <iomanip>
+#include <iostream>
+#include <thread>
 
 slide& slide::get_slide() noexcept
 {
@@ -42,10 +42,12 @@ int slide::sw() const noexcept
 std::string slide::rotate() const
 {
     std::string const& s = message();
-    std::string temp =  is_screen_full() ? s.substr(counter() - (sw() - 1), sw()) : s.substr(0, counter());
-    
-    return is_screen_full()        ? temp.append(     sw() - temp.size(), ' ')  :
-           counter() > temp.size() ? temp.append(counter() - temp.size(), ' ')  : temp;
+    std::string temp = is_screen_full() ? s.substr(counter() - (sw() - 1), sw())
+                                        : s.substr(0, counter());
+
+    return is_screen_full()          ? temp.append(sw() - temp.size(), ' ')
+           : counter() > temp.size() ? temp.append(counter() - temp.size(), ' ')
+                                     : temp;
 }
 
 void slide::clear_line() const noexcept
