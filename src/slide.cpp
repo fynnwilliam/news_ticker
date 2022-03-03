@@ -72,7 +72,7 @@ std::size_t slide::counter() const noexcept
 
 void slide::reset_counter() noexcept
 {
-    counter_ = 0;
+    counter_ = 0uz;
 }
 
 void slide::display()
