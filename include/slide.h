@@ -26,6 +26,7 @@ public:
     std::string& message() noexcept;
     void message(int argc, char** argv) noexcept;
     void message(std::string const&);
+    void message(std::string&&) noexcept;
     void display();
     void counter(std::size_t) noexcept;
     std::size_t counter() const noexcept;

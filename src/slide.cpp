@@ -24,6 +24,11 @@ void slide::message(std::string const& s)
     message() = s;
 }
 
+void slide::message(std::string&& s) noexcept
+{
+    message() = std::move(s);
+}
+
 bool slide::is_screen_full() const noexcept
 {
     return counter() >= sw();
