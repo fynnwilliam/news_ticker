@@ -19,9 +19,9 @@ void slide::message(int argc, char** argv) noexcept
     if(message().size()) message().pop_back();
 }
 
-void slide::message(std::string s) noexcept
+void slide::message(std::string const& s)
 {
-    message() = std::move(s);
+    message() = s;
 }
 
 bool slide::is_screen_full() const noexcept

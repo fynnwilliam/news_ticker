@@ -14,7 +14,7 @@ private:
     void clear_line() const noexcept;
     bool is_screen_full() const noexcept;
     int sw() const noexcept;
-    
+
     slide() = default;
     slide(slide const&) = delete;
     slide& operator=(slide const&) = delete;
@@ -25,7 +25,7 @@ public:
     std::string const& message() const noexcept { return message_; }
     std::string& message() noexcept;
     void message(int argc, char** argv) noexcept;
-    void message(std::string s) noexcept;
+    void message(std::string const&);
     void display();
     void counter(std::size_t) noexcept;
     std::size_t counter() const noexcept;
