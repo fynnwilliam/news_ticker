@@ -7,4 +7,9 @@ endif()
 
 add_executable(slide main.cpp)
 target_link_libraries(slide PRIVATE slide_)
-target_compile_options(slide PRIVATE -O3)
+
+if(MSVC)
+  target_compile_options(slide PRIVATE \W4)
+else()
+  target_compile_options(slide PRIVATE -Wall -Wextra -O3)
+endif()
