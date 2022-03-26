@@ -21,6 +21,9 @@ private:
 
 public:
     static slide& get_slide() noexcept;
+
+    slide(slide&&) = default;
+    slide& operator=(slide&&) = default;
     
     std::string const& message() const noexcept { return message_; }
     std::string& message() noexcept;
