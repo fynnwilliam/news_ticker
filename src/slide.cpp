@@ -19,7 +19,7 @@ void slide::message(int argc, char** argv) noexcept
     if(message().size()) message().pop_back();
 }
 
-void slide::message(std::string&& s) noexcept
+void slide::message(std::string s) noexcept
 {
     message() = std::move(s);
 }
