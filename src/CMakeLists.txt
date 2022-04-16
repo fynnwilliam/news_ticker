@@ -1,9 +1,5 @@
 add_library(slide_ slide.cpp)
-if(MSVC)
-  target_include_directories(slide_ PUBLIC .. \include)
-else()
-  target_include_directories(slide_ PUBLIC ../include)
-endif()
+target_include_directories(slide_ PUBLIC ../include)
 
 add_executable(slide main.cpp)
 target_link_libraries(slide PRIVATE slide_)
