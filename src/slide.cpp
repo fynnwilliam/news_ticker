@@ -20,7 +20,7 @@ void slide::message(int argc, char** argv) noexcept {
 
 void slide::message(std::string s) noexcept { message() = std::move(s); }
 
-bool slide::is_screen_full() const noexcept { return counter_ >= sw(); }
+bool slide::is_screen_full() const noexcept { return counter_ >= screen_width_; }
 
 std::string& slide::message() noexcept { return message_; }
 
@@ -28,12 +28,12 @@ int slide::sw() const noexcept { return screen_width_; }
 
 std::string slide::rotate() const {
   std::string temp = is_screen_full()
-                         ? message_.substr(counter_ - (sw() - 1), sw())
+                         ? message_.substr(counter_ - (screen_width_ - 1), screen_width_)
                          : message_.substr(0, counter_);
 
-  return is_screen_full()          ? temp.append(sw() - temp.size(), ' ')
+  return is_screen_full()         ? temp.append(screen_width_ - temp.size(), ' ')
          : counter_ > temp.size() ? temp.append(counter_ - temp.size(), ' ')
-                                   : temp;
+                                  : temp;
 }
 
 void slide::clear_line() const noexcept { std::cout << "\u001b[2K"; }
@@ -47,8 +47,8 @@ void slide::reset_counter() noexcept { counter_ = 0uz; }
 void slide::display() {
   using namespace std::chrono_literals;
 
-  for (; counter_ < message_.size() + sw(); ++counter_) {
-    std::cout << std::setw(sw()) << rotate() + '\r' << std::flush;
+  for (; counter_ < message_.size() + screen_width_; ++counter_) {
+    std::cout << std::setw(screen_width_) << rotate() + '\r' << std::flush;
     std::this_thread::sleep_for(150ms);
   }
 
