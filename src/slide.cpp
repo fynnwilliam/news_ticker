@@ -12,10 +12,10 @@ slide& slide::get_slide() noexcept {
 
 void slide::message(int argc, char** argv) noexcept {
   for (int i{1}; i < argc; ++i)
-    message().append(argv[i]).append(" ");
+    message_.append(argv[i]).append(" ");
 
-  if (message().size())
-    message().pop_back();
+  if (message_.size())
+    message_.pop_back();
 }
 
 void slide::message(std::string s) noexcept { message() = std::move(s); }
@@ -47,7 +47,7 @@ void slide::reset_counter() noexcept { counter_ = 0uz; }
 void slide::display() {
   using namespace std::chrono_literals;
 
-  for (; counter() < message().size() + sw(); ++counter_) {
+  for (; counter() < message_.size() + sw(); ++counter_) {
     std::cout << std::setw(sw()) << rotate() + '\r' << std::flush;
     std::this_thread::sleep_for(150ms);
   }
