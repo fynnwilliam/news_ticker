@@ -10,7 +10,6 @@ private:
 
   std::string rotate() const;
   void reset_counter() noexcept;
-  void clear_line() const noexcept;
 
   slide() = default;
   slide(slide const&) = delete;

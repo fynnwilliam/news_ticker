@@ -34,8 +34,6 @@ std::string slide::rotate() const {
                                   : temp;
 }
 
-void slide::clear_line() const noexcept { std::cout << "\u001b[2K"; }
-
 void slide::counter(std::size_t c) noexcept { counter_ = c; }
 
 std::size_t slide::counter() const noexcept { return counter_; }
@@ -51,5 +49,4 @@ void slide::display() {
   }
 
   reset_counter();
-  clear_line();
 }
