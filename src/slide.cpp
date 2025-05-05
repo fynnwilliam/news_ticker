@@ -43,9 +43,14 @@ void slide::reset_counter() noexcept { counter_ = 0uz; }
 void slide::display() {
   using namespace std::chrono_literals;
 
-  auto max_counter = message_.size() + screen_width_;
-  for (; counter_ < max_counter; ++counter_) {
-    std::cout << std::setw(screen_width_) << rotate() + '\r' << std::flush;
+  message_.append(screen_width_, ' ');
+  for (auto max_counter = message_.size(); counter_ < max_counter; ++counter_) {
+    auto s =
+        counter_ >= screen_width_
+            ? std::
+                  string_view{&message_[counter_ - (screen_width_ - 1)], screen_width_}
+            : std::string_view{&message_[0], counter_};
+    std::cout << std::setw(screen_width_) << s << '\r' << std::flush;
     std::this_thread::sleep_for(150ms);
   }
 
