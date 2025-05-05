@@ -32,12 +32,11 @@ void slide::display() {
   using namespace std::chrono_literals;
 
   message_.append(screen_width_, ' ');
+  const char* msg_ptr = message_.data();
   for (auto max_counter = message_.size(); counter_ < max_counter; ++counter_) {
-    auto s =
-        counter_ >= screen_width_
-            ? std::
-                  string_view{&message_[counter_ - (screen_width_ - 1)], screen_width_}
-            : std::string_view{&message_[0], counter_};
+    auto s = counter_ >= screen_width_
+                 ? std::string_view{++msg_ptr, screen_width_}
+                 : std::string_view{msg_ptr, counter_};
     std::cout << std::setw(screen_width_) << s << '\r' << std::flush;
     std::this_thread::sleep_for(150ms);
   }
