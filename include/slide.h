@@ -2,34 +2,33 @@
 
 #include <string>
 
-class slide
-{
+class slide {
 private:
-    std::string message_;
-    std::size_t counter_{};
-    constexpr static int screen_width_{75};
+  std::string message_;
+  std::size_t counter_{};
+  constexpr static int screen_width_{75};
 
-    std::string rotate() const;
-    void reset_counter() noexcept;
-    void clear_line() const noexcept;
-    bool is_screen_full() const noexcept;
-    int sw() const noexcept;
+  std::string rotate() const;
+  void reset_counter() noexcept;
+  void clear_line() const noexcept;
+  bool is_screen_full() const noexcept;
+  int sw() const noexcept;
 
-    slide() = default;
-    slide(slide const&) = delete;
-    slide& operator=(slide const&) = delete;
+  slide() = default;
+  slide(slide const&) = delete;
+  slide& operator=(slide const&) = delete;
 
 public:
-    static slide& get_slide() noexcept;
+  static slide& get_slide() noexcept;
 
-    slide(slide&&) = default;
-    slide& operator=(slide&&) = default;
-    
-    std::string const& message() const noexcept { return message_; }
-    std::string& message() noexcept;
-    void message(int argc, char** argv) noexcept;
-    void message(std::string) noexcept;
-    void display();
-    void counter(std::size_t) noexcept;
-    std::size_t counter() const noexcept;
+  slide(slide&&) = default;
+  slide& operator=(slide&&) = default;
+
+  std::string const& message() const noexcept { return message_; }
+  std::string& message() noexcept;
+  void message(int argc, char** argv) noexcept;
+  void message(std::string) noexcept;
+  void display();
+  void counter(std::size_t) noexcept;
+  std::size_t counter() const noexcept;
 };
