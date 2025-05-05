@@ -1,6 +1,4 @@
-#define CATCH_CONFIG_MAIN
-
-#include <catch2/catch.hpp>
+#include <catch2/catch_test_macros.hpp>
 #include "slide.h"
 
 TEST_CASE("get_slide() should always return an lvalue of  the same slide object")
