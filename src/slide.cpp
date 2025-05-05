@@ -20,18 +20,22 @@ void slide::message(int argc, char** argv) noexcept {
 
 void slide::message(std::string s) noexcept { message() = std::move(s); }
 
-bool slide::is_screen_full() const noexcept { return counter_ >= screen_width_; }
+bool slide::is_screen_full() const noexcept {
+  return counter_ >= screen_width_;
+}
 
 std::string& slide::message() noexcept { return message_; }
 
 int slide::sw() const noexcept { return screen_width_; }
 
 std::string slide::rotate() const {
-  std::string temp = is_screen_full()
-                         ? message_.substr(counter_ - (screen_width_ - 1), screen_width_)
-                         : message_.substr(0, counter_);
+  const bool is_screen_full = counter_ >= screen_width_;
+  std::string temp =
+      is_screen_full
+          ? message_.substr(counter_ - (screen_width_ - 1), screen_width_)
+          : message_.substr(0, counter_);
 
-  return is_screen_full()         ? temp.append(screen_width_ - temp.size(), ' ')
+  return is_screen_full ? temp.append(screen_width_ - temp.size(), ' ')
          : counter_ > temp.size() ? temp.append(counter_ - temp.size(), ' ')
                                   : temp;
 }
