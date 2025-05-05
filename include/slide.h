@@ -8,7 +8,6 @@ private:
   std::size_t counter_{};
   constexpr static int screen_width_{75};
 
-  std::string rotate() const;
   void reset_counter() noexcept;
 
   slide() = default;
