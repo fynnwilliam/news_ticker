@@ -20,10 +20,6 @@ void slide::message(int argc, char** argv) noexcept {
 
 void slide::message(std::string s) noexcept { message() = std::move(s); }
 
-bool slide::is_screen_full() const noexcept {
-  return counter_ >= screen_width_;
-}
-
 std::string& slide::message() noexcept { return message_; }
 
 int slide::sw() const noexcept { return screen_width_; }

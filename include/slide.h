@@ -11,7 +11,6 @@ private:
   std::string rotate() const;
   void reset_counter() noexcept;
   void clear_line() const noexcept;
-  bool is_screen_full() const noexcept;
   int sw() const noexcept;
 
   slide() = default;
