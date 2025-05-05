@@ -11,8 +11,7 @@ private:
   std::string rotate() const;
   void reset_counter() noexcept;
   void clear_line() const noexcept;
-  int sw() const noexcept;
-
+  
   slide() = default;
   slide(slide const&) = delete;
   slide& operator=(slide const&) = delete;

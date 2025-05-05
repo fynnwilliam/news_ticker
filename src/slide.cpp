@@ -22,8 +22,6 @@ void slide::message(std::string s) noexcept { message() = std::move(s); }
 
 std::string& slide::message() noexcept { return message_; }
 
-int slide::sw() const noexcept { return screen_width_; }
-
 std::string slide::rotate() const {
   const bool is_screen_full = counter_ >= screen_width_;
   std::string temp =
