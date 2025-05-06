@@ -16,4 +16,15 @@ const auto slide = [](std::string msg, const size_t width = 75) {
   }
 };
 
-int main() { slide("testing slide..."); }
+const auto message = [](int argc, char** argv) {
+  std::string message;
+  for (int index{1}; index < argc; ++index)
+    message.append(argv[index]).append(" ");
+
+  return message;
+};
+
+int main(int argc, char** argv) {
+  auto note = argc > 1 ? message(argc, argv) : "testing slide...";
+  slide(note);
+}
