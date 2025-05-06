@@ -1,6 +1,6 @@
-#include <string>
 #include <iomanip>
 #include <iostream>
+#include <string>
 #include <thread>
 
 const auto slide = [](std::string msg, const size_t width = 75) {
@@ -15,3 +15,5 @@ const auto slide = [](std::string msg, const size_t width = 75) {
     std::this_thread::sleep_for(150ms);
   }
 };
+
+int main() { slide("testing slide..."); }
