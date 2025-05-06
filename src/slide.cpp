@@ -28,18 +28,17 @@ std::size_t slide::counter() const noexcept { return counter_; }
 
 void slide::reset_counter() noexcept { counter_ = 0uz; }
 
-void slide::display() {
+const auto slide = [](std::string msg, const size_t width = 75) {
   using namespace std::chrono_literals;
 
-  message_.append(screen_width_, ' ');
-  const char* msg_ptr = message_.data();
-  for (auto max_counter = message_.size(); counter_ < max_counter; ++counter_) {
-    auto s = counter_ >= screen_width_
-                 ? std::string_view{++msg_ptr, screen_width_}
-                 : std::string_view{msg_ptr, counter_};
-    std::cout << std::setw(screen_width_) << s << '\r' << std::flush;
+  msg.append(width, ' ');
+  const char* msg_ptr = msg.data();
+  for (auto size = msg.size(), index = 0zu; index < size; ++index) {
+    auto s = index >= width ? std::string_view{++msg_ptr, width}
+                            : std::string_view{msg_ptr, index};
+    std::cout << std::setw(width) << s << '\r' << std::flush;
     std::this_thread::sleep_for(150ms);
   }
+};
 
-  reset_counter();
-}
+void slide::display() { ::slide(message_, screen_width_); }
