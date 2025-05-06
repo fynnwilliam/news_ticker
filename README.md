@@ -17,12 +17,11 @@ $ cmake --build "build" --config Release
 # Optional - Go to the build directory to run the app
 $ cd build
 ```
-  
+
 and to run the program, you may pass arguments directly to the binary
 
 `$ ./slide message to be displayed`
- 
- Kindly replace __*message to be displayed*__ with  the actual message you want to show.
-or run it with no arguments to display the default message
+
+Kindly replace __*message to be displayed*__ with  the actual message you want to show. You may also run it with no arguments to display the default message
 
 `$ ./slide`
