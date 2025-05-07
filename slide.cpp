@@ -36,7 +36,8 @@ const auto message = [](int argc, char** argv) {
 };
 
 int main(int argc, char** argv) {
-  auto note = argc > 1 ? message(argc, argv)
-                       : "hi, welcome to C++ London | CppCon | ACCU | CppOnSea";
+  auto note = argc > 1
+                  ? message(argc, argv)
+                  : "hi, welcome to C++ London | CppCon | ACCU | C++ on Sea";
   slide(note);
 }
