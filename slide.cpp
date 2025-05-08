@@ -3,11 +3,11 @@
 #include <string>
 #include <thread>
 
-auto conditon = [i = 0] mutable { return i ^= 1 == 1; };
+auto slide_once = [i = 0] mutable { return i ^= 1 == 1; };
 
-template <typename Func = decltype(conditon)>
+template <typename Func = decltype(slide_once)>
 auto slide_until(
-    std::string note, const size_t width = 75, Func keep_sliding = conditon
+    std::string note, const size_t width = 75, Func keep_sliding = slide_once
 ) {
   using namespace std::chrono_literals;
 
