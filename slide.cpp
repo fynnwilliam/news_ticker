@@ -3,7 +3,7 @@
 #include <string>
 #include <thread>
 
-auto slide_once = [i = false] mutable { return i ^= true; };
+auto slide_once = [slide = false] mutable { return slide ^= true; };
 
 template <typename Func = decltype(slide_once)>
 auto slide_until(
